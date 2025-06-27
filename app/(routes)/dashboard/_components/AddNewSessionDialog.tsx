@@ -16,6 +16,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { ArrowRight, Loader2 } from "lucide-react";
 import axios from "axios";
 import SuggestedDoctorCard from "./SuggestedDoctorCard";
+import { useRouter } from "next/navigation";
 
 export type doctorAgent = {
   id: number;
@@ -34,6 +35,7 @@ function AddNewSessionDialog() {
   const [loading, setLoading] = useState(false);
   const [suggestedDoctors, setSuggestedDoctors] = useState<doctorAgent[]>([]);
   const [selectedDoctor, setSelectedDoctor] = useState<doctorAgent>();
+  const router=useRouter();
   const OnClickNext = async () => {
     setLoading(true);
     const result = await axios.post("/api/suggest-doctors", {
@@ -55,6 +57,7 @@ function AddNewSessionDialog() {
     console.log(result.data);
     if (result.data?.sessionId){
       console.log(result.data.sessionId);
+      router.push('/dashboard/medical-agent/'+result.data.sessionId);
     }
     setLoading(false);
   }

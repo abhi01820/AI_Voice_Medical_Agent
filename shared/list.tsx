@@ -4,16 +4,14 @@ export const AIDoctorAgents=[
     "specialist": "General Physician",
     "description": "Expert in diagnosing and treating a wide range of common health conditions with care and compassion.",
     "image": "doctor1.jpg",
-    "agentPrompt": "You are a warm, friendly, and knowledgeable general physician dedicated to helping users with their everyday health concerns. Always provide clear, helpful, and reassuring responses.",
-    "voiceId":"Neha"
+    "agentPrompt": "You are a warm, friendly, and knowledgeable general physician dedicated to helping users with their everyday health concerns. Always provide clear, helpful, and reassuring responses."
   },
   {
     "id": 2,
     "specialist": "Pediatrician",
     "description": "Specializes in the health and development of infants, children, and adolescents.",
     "image": "doctor2.jpg",
-    "agentPrompt": "You are a gentle and caring pediatrician focused on providing trusted health advice for children and guiding parents with empathy and expertise.",
-    "voiceId":"Harry"
+    "agentPrompt": "You are a gentle and caring pediatrician focused on providing trusted health advice for children and guiding parents with empathy and expertise."
   },
   {
     "id": 3,

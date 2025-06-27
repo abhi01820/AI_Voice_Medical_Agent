@@ -25,6 +25,10 @@ export type doctorAgent = {
   agentPrompt: string;
 };
 
+
+
+
+
 function AddNewSessionDialog() {
   const [note, setNote] = useState<string>("");
   const [loading, setLoading] = useState(false);
@@ -40,6 +44,20 @@ function AddNewSessionDialog() {
     setSuggestedDoctors(result.data.suggested_doctors);
     setLoading(false);
   };
+
+
+  const onStartConsultation=async ()=>{
+    setLoading(true);
+    const result=await axios.post('/api/session-chat',{
+      notes:note,
+      selectedDoctor:selectedDoctor,
+    });
+    console.log(result.data);
+    if (result.data?.sessionId){
+      console.log(result.data.sessionId);
+    }
+    setLoading(false);
+  }
 
   return (
     <Dialog
@@ -76,7 +94,7 @@ function AddNewSessionDialog() {
       key={index}
       doctorAgent={doctor}
       isSelected={selectedDoctor?.id === doctor.id}
-      setSelectedDoctor={setSelectedDoctor}
+      setSelectedDoctor={()=>setSelectedDoctor(doctor)}
     />
   ))}
 </div>
@@ -93,9 +111,11 @@ function AddNewSessionDialog() {
             <Button disabled={!note || loading} onClick={() => OnClickNext()}>
               Next
               {loading ? <Loader2 className="animate-spin" /> : <ArrowRight />}
-            </Button>
+            </Button>  
           ) : (
-            <Button> Start Consultation </Button>
+            <Button disabled={loading || !selectedDoctor}  onClick={()=>onStartConsultation()}> Start Consultation
+            {loading ? <Loader2 className="animate-spin" /> : <ArrowRight />}
+             </Button>
           )}
         </DialogFooter>
       </DialogContent>

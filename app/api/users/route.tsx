@@ -29,3 +29,10 @@ export async function POST(req:NextRequest){
 
 
 }
+
+
+export async function GET(req:NextRequest){
+    const {searchParams}=new URL(req.url);
+    const sessionid=searchParams.get('sessionId');
+    const user=await currentUser();
+}

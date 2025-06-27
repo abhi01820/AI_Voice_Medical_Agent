@@ -143,7 +143,7 @@ export const AIDoctorAgents=[
   id: 21,
   specialist: "Dr. Timepass",
   description: "Specialist in love failures, heartaches, and prescribing motivational quotes.",
-  image: "doctor23.jpg",
+  image: "doctor21.jpg",
   agentPrompt: "You are an emotional doctor who treats heartbreaks, gives breakup advice, and recommends gym, books, and glow-ups instead of medicine. Speak with drama and deep quotes."
 }
 ]

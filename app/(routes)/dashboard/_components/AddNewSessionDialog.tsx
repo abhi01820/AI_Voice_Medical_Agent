@@ -70,15 +70,17 @@ function AddNewSessionDialog() {
             ) : (
               <div>
                 <h2>Select the doctor </h2>
-                <div className="grid grid-cols-3 gap-5">
-                  {suggestedDoctors.map((doctor, index) => (
-                    <SuggestedDoctorCard
-                      doctorAgent={doctor}
-                      key={index}
-                      setSelectedDoctor={() => setSelectedDoctor(doctor)}
-                    />
-                  ))}
-                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-4">
+  {suggestedDoctors.map((doctor, index) => (
+    <SuggestedDoctorCard
+      key={index}
+      doctorAgent={doctor}
+      isSelected={selectedDoctor?.id === doctor.id}
+      setSelectedDoctor={setSelectedDoctor}
+    />
+  ))}
+</div>
+
               </div>
             )}
           </DialogDescription>

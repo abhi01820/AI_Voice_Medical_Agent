@@ -1,46 +1,4 @@
 
-// import React from "react";
-// import Image from "next/image";
-
-// export type doctorAgent = {
-//   id: number;
-//   specialist: string;
-//   description: string;
-//   image: string;
-//   agentPrompt: string;
-// };
-
-
-
-// type props = {
-//   doctorAgent: doctorAgent,
-//   setSelectedDoctor:any 
-// };
-
-// function SuggestedDoctorCard({ doctorAgent,setSelectedDoctor }: props) {
-//   return (
-//     <div className="flex flex-col p-5 items-center
-//      justify-center border rounded-2xl shadow 
-//      hover:border-blue-500 cursor-pointer
-//       "
-//       onClick={()=> setSelectedDoctor(doctorAgent)}
-//       >
-//       <Image
-//                 src={`/${doctorAgent.image}`}
-//                 alt={doctorAgent.specialist}
-//                 width={200}
-//                 height={200}
-//                 className="w-full h-[250px] object-contain transition-all duration-300 group-hover:scale-105"
-//               />
-//       <h5 className="font-bold text-sm text-center">{doctorAgent.id}</h5>
-//       <h2 className="font-bold text-sm text-center">{doctorAgent.specialist}</h2>
-//       <p className="text-xs text-center line-clamp-2">{doctorAgent.description}</p>
-//     </div>
-//   );
-// }
-
-// export default SuggestedDoctorCard;
-
 import React from "react";
 import Image from "next/image";
 
@@ -55,16 +13,18 @@ export type doctorAgent = {
 type props = {
   doctorAgent: doctorAgent;
   setSelectedDoctor: (doctor: doctorAgent) => void;
+  isSelected: boolean;
 };
 
-function SuggestedDoctorCard({ doctorAgent, setSelectedDoctor }: props) {
+function SuggestedDoctorCard({ doctorAgent, setSelectedDoctor, isSelected }: props) {
   const imageSrc = doctorAgent.image?.startsWith("/")
     ? doctorAgent.image
     : `/${doctorAgent.image}`;
 
   return (
     <div
-      className="flex flex-col p-5 items-center justify-center border rounded-2xl shadow hover:border-blue-500 cursor-pointer"
+      className={`flex flex-col p-4 items-center justify-center rounded-2xl shadow-sm transition-all duration-200 border-2 cursor-pointer
+        ${isSelected ? "border-blue-500 bg-blue-50 shadow-md" : "border-gray-200 hover:border-blue-400 hover:shadow-lg"}`}
       onClick={() => setSelectedDoctor(doctorAgent)}
     >
       <div className="w-full h-[150px] relative">
@@ -83,9 +43,9 @@ function SuggestedDoctorCard({ doctorAgent, setSelectedDoctor }: props) {
         )}
       </div>
 
-      <h5 className="font-bold text-sm text-center mt-3">#{doctorAgent.id}</h5>
-      <h2 className="font-bold text-sm text-center">{doctorAgent.specialist}</h2>
-      <p className="text-xs text-center text-gray-600 line-clamp-2">
+      <h5 className="font-semibold text-sm text-center mt-2 text-gray-500">#{doctorAgent.id}</h5>
+      <h2 className="font-bold text-md text-center text-blue-600">{doctorAgent.specialist}</h2>
+      <p className="text-sm text-center text-gray-600 mt-1 line-clamp-2">
         {doctorAgent.description}
       </p>
     </div>

@@ -18,6 +18,7 @@ export type SessionDetail={
 }
 
 
+
 function HistoryList() {
   const [historyList, setHistoryList] = useState<SessionDetail[]>([]);
 

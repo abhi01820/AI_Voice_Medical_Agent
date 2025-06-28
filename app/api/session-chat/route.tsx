@@ -27,7 +27,7 @@ export async function POST(req:NextRequest){
 
 
 
-export async function GET(req:NextResponse){
+export async function GET(req:NextRequest){
     const {searchParams}=new URL(req.url);
     const sessionId=searchParams.get('sessionId');
     const user=await currentUser();

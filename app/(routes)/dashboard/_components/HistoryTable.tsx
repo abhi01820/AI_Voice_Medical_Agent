@@ -12,6 +12,7 @@ import {
 import { SessionDetail } from "./HistoryList";
 import { Button } from "@/components/ui/button";
 import moment from 'moment';
+import ViewReportDialog from "./ViewReportDialog";
 
 type Props = {
   historyList: SessionDetail[];
@@ -37,7 +38,10 @@ function HistoryTable({ historyList }: Props) {
               <TableCell>{record.notes}</TableCell>
               <TableCell>{moment(new Date(record.createdOn)).fromNow() }</TableCell>
               <TableCell className="text-right">
-                <Button variant={'link'} size={'sm'}  > View Report </Button>
+                <Button variant={'link'} size={'sm'}  > 
+                  <ViewReportDialog record={record} />
+
+                </Button>
               </TableCell>
             </TableRow>
           ))}
@@ -48,3 +52,5 @@ function HistoryTable({ historyList }: Props) {
 }
 
 export default HistoryTable;
+
+

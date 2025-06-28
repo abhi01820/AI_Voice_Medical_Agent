@@ -6,29 +6,14 @@ import { eq } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
 import { report } from "process";
 
+
+
 const REPORT_GEN_PROMPT = `
-You are an AI Medical Voice Agent that just finished a voice conversation with a user. Based on the doctor AI agent info and the conversation transcript, generate a structured medical session report.
+You are an AI Medical Voice Agent that has just completed a voice conversation with a user regarding their medical condition.
 
-Include the following fields:
-1. sessionId: a unique session identifier  
-2. agent: the medical specialist name (e.g., "General Physician AI")  
-3. user: name of the patient or "Anonymous" if not provided  
-4. timestamp: current date and time in ISO format  
-5. chiefComplaint: one-sentence summary of the main health concern  
-6. summary: a 2–3 sentence summary of the conversation  
-7. symptoms: list of symptoms mentioned by the user  
-8. duration: how long the user has experienced the symptoms  
-9. severity: mild, moderate, or severe  
-10. medicationsMentioned: list of any medicines according to the user requirement 
-11. recommendations: list of AI suggestions (e.g., rest, see a doctor)  
+Your job is to generate a **fully detailed and helpful medical session report**, even if the user did not provide complete information. You must **infer** possible answers using medical reasoning based on the conversation and the doctor’s specialty.
 
- Important:
-- Always include all fields in the output, even if no data is available.
-- If data is missing or unclear, use:
-  - "Unknown" for strings
-  - [] for lists
-
-Return only the following JSON object:
+Generate the report in the following format:
 
 {
   "sessionId": "string",
@@ -40,12 +25,23 @@ Return only the following JSON object:
   "symptoms": ["symptom1", "symptom2"],
   "duration": "string",
   "severity": "string",
-  "medicationsMentioned": ["med1", "med2","med3","med4"],
+  "medicationsMentioned": ["med1", "med2"],
   "recommendations": ["rec1", "rec2"]
 }
 
-Respond with only the JSON. No extra explanation.
+Instructions:
+- If the user didn’t explicitly mention something (like duration, medications, etc.), make **reasonable assumptions** based on typical medical knowledge.
+- For example: 
+   - “fever and cough” often implies “Paracetamol” and “Rest, hydration, visit a doctor if persistent.”
+   - If no name is provided, use "Anonymous".
+   - If medications are not mentioned, suggest common ones for the symptoms.
+- Avoid leaving any fields blank or as “Unknown” unless there is absolutely no clue.
+
+Be professional, concise, and medically sound. 
+Output only the valid JSON object. Do NOT include any explanations, markdown syntax, or extra formatting.
 `;
+
+
 
 
 

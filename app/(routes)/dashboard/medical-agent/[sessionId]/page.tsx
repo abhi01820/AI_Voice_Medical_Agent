@@ -104,8 +104,7 @@ function MedicalVoiceAgent() {
     setVapiInstance(null);
     toast.success('Your report is generated !');
     setLoading(false);
-    router.replace('/dashboard');
-    
+    router.replace('/dashboard/history');
   };
 
   const GenerateReport = async () => {

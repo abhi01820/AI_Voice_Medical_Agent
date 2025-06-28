@@ -20,8 +20,9 @@ function Dashboard() {
                   height={200}
                   className="rounded-full border-4 border-black-100 shadow-lg hover:scale-105 hover:shadow-2xl transition-transform duration-300 ease-in-out"
                 />
-                <h2 className="font-bold text-xl mt-2 ">No Recent Consultations </h2>
-                <p>It looks like you haven't consulted with any doctor yet . </p>
+                <h2 className="font-bold text-xl mt-2">Welcome to AI Voice Medical Assistant</h2>
+                <p>Start your first consultation to receive personalized care and expert medical advice—anytime, anywhere.</p>
+
                 <AddNewSessionDialog />
               </div>
       {/* <HistoryList/> */}

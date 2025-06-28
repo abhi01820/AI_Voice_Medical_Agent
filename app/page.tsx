@@ -5,10 +5,11 @@ import { FeatureBentoGrid } from "./_components/FeatureBentoGrid";
 import { UserButton, useUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="relative  my-10 flex  flex-col items-center justify-center">
+    <div className="relative   flex  flex-col items-center justify-center">
       <Navbar />
       <div className="absolute inset-y-0 left-0 h-full w-px bg-neutral-200/80 dark:bg-neutral-800/80">
         <div className="absolute top-0 h-40 w-px bg-gradient-to-b from-transparent via-blue-500 to-transparent" />
@@ -52,9 +53,8 @@ export default function Home() {
           }}
           className="relative z-10 mx-auto max-w-xl py-4 text-center text-lg font-normal text-neutral-600 dark:text-neutral-400"
         >
-          Deliver personalized care with AI-driven voice assistant, empowering
-          patients to take control of their health. and Automate appointment
-          Scheduling ,symptom triage , and follow-up care-24/7 .
+          Empower your patients with personalized care through our AI-driven voice assistant.
+Seamlessly automate appointment scheduling, symptom triage, and 24/7 follow-up care—giving patients control over their health like never before.
         </motion.p>
         <Link href={"/dashboard"}>
           <motion.div
@@ -68,10 +68,10 @@ export default function Home() {
               duration: 0.3,
               delay: 1,
             }}
-            className="relative z-10 mt-8 flex flex-wrap items-center justify-center gap-4"
+            className="relative z-10  flex flex-wrap items-center justify-center gap-4"
           >
-            <button className="w-60 transform rounded-lg bg-black px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200">
-              Get Started 
+            <button className="w-60 transform rounded-lg bg-black px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 cursor-pointer hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200">
+              Get Started
             </button>
           </motion.div>
         </Link>
@@ -88,20 +88,33 @@ export default function Home() {
             duration: 0.3,
             delay: 1.2,
           }}
-          className="relative z-10 mt-20 rounded-3xl border border-neutral-200 bg-neutral-100 p-4 shadow-md dark:border-neutral-800 dark:bg-neutral-900"
+          className="relative z-10 mt-10 rounded-3xl border border-neutral-200 bg-neutral-100 p-4 shadow-md dark:border-neutral-800 dark:bg-neutral-900"
         >
-          <div className="w-full overflow-hidden rounded-xl border border-gray-300 dark:border-gray-700">
-            <img
-              src="https://assets.aceternity.com/pro/aceternity-landing.webp"
-              alt="Landing page preview"
-              className="aspect-[16/9] h-auto w-full object-cover"
-              height={1000}
-              width={1000}
-            />
-          </div>
+          
+          <footer className="w-full bg-white border-t border-gray-200 dark:bg-neutral-900 dark:border-neutral-800 ">
+            <div className="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <img
+                  src="/user-avatar.png"
+                  alt="Brand Logo"
+                  className="w-13 h-13 rounded-full object-cover border border-gray-300"
+                />
+                <span className="text-lg font-semibold text-gray-800 dark:text-white">
+                  <Image src="/logo.svg" alt="arcAbhi" width={200} height={100} />
+                </span>
+              </div>
+
+
+              <div className="text-sm text-gray-500 dark:text-gray-400 text-center md:text-right">
+                Powered by{" "}
+                <span className="font-medium text-blue-600 dark:text-blue-400">
+                  Abhi-2005
+                </span>
+              </div>
+            </div>
+          </footer>
         </motion.div>
       </div>
-     
     </div>
   );
 }
@@ -111,12 +124,13 @@ const Navbar = () => {
   return (
     <nav className="flex w-full items-center justify-between border-t border-b border-neutral-200 px-4 py-4 dark:border-neutral-800">
       <div className="flex items-center gap-2">
-        <div className="size-7 rounded-full bg-gradient-to-br from-violet-500 to-pink-500" />
-        <h1 className="text-base font-bold md:text-2xl">AI_Voice_Medical_Agent</h1>
+        <h1 className="text-base font-bold md:text-2xl">
+          <Image src="/logo.svg" alt="arcAbhi" width={200} height={100} />
+        </h1>
       </div>
       {!user ? (
         <Link href={"/sign-in"}>
-          <button className="w-24 transform rounded-lg bg-black px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-800 md:w-32 dark:bg-white dark:text-black dark:hover:bg-gray-200">
+          <button className="w-24 transform rounded-lg bg-black px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-800 md:w-32 dark:bg-white dark:text-black  cursor-pointer dark:hover:bg-gray-200">
             Login
           </button>
         </Link>
@@ -124,10 +138,10 @@ const Navbar = () => {
         <div className="flex gap-5 items-center">
           <UserButton />
           <Link href={"/dashboard"}>
-          <button className="w-24 transform rounded-lg bg-black px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-800 md:w-32 dark:bg-white dark:text-black dark:hover:bg-gray-200">
-            Dashboard
-          </button>
-        </Link>
+            <button className="w-24 transform rounded-lg bg-black px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-800 md:w-32 dark:bg-white dark:text-black cursor-pointer dark:hover:bg-gray-200">
+              Dashboard
+            </button>
+          </Link>
         </div>
       )}
     </nav>

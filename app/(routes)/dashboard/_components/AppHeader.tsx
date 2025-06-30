@@ -22,7 +22,7 @@ function AppHeader() {
       <div className="hidden md:flex gap-8 items-center text-sm font-medium text-gray-700 dark:text-gray-200">
         {menuOptions.map((option) => (
           <Link key={option.id} href={option.path}>
-            <h2 className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 cursor-pointer">
+            <h2 className="hover:text-blue-600 dark:hover:text-blue-400 text-10 transition-colors duration-200 cursor-pointer">
               {option.name}
             </h2>
           </Link>

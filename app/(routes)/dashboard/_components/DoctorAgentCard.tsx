@@ -30,7 +30,7 @@ function DoctorAgentCard({ doctorAgent }: props) {
 
       <div className="mt-4 space-y-2">
         <h2 className="text-lg font-bold text-blue-700 tracking-tight">
-          {doctorAgent.id} — {doctorAgent.specialist}
+          {doctorAgent.specialist}
         </h2>
         <p className="text-sm text-gray-600 line-clamp-2">
           {doctorAgent.description}

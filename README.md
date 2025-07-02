@@ -6,8 +6,6 @@ A full-stack AI SaaS application that allows users to interact with a virtual do
 
 ---
 
-## 🚀 Live Demo
-> Coming Soon or Hosted on Vercel (if deployed)
 
 ---
 

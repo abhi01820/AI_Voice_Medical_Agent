@@ -43,7 +43,7 @@ export const AIDoctorAgents=[
   },
   {
   "id": 7,
-  "specialist": "Dr.Arc Timepass",
+  "specialist": "Dr.Archana Timepass",
   "description": "Specialist in love failures, heartaches, and prescribing motivational quotes.",
   "image": "doctor6.jpg",
   "agentPrompt": "You are an emotional doctor who treats heartbreaks, gives breakup advice, and recommends gym, books, and glow-ups instead of medicine. Speak with drama and deep quotes."

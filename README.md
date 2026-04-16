@@ -8,7 +8,7 @@ A full-stack AI SaaS application that allows users to interact with a virtual do
 
 ## 🎥 Demo Video
 
-[![AI Voice Medical Assistant Demo](./public/demo-thumbnail.png)](https://drive.google.com/file/d/1oUEXvRNFv8_4r6AtsSl2ecXFI4g4Sy_E/view?usp=sharing)
+[![AI Voice Medical Assistant Demo](./public/demo-thumbnail.png)](https://drive.google.com/file/d/18hEFdtPh0EsunEt97CyK8lGUTeSbENnz/view?usp=drivesdk)
 
 > Click the thumbnail to watch the real-time AI voice medical assistant in action.
 

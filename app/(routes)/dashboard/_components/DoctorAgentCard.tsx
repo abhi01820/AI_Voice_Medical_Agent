@@ -1,7 +1,12 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { IconArrowRight } from "@tabler/icons-react";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import axios from "axios";
+import { Loader2 } from "lucide-react";
 
 type doctorAgent = {
   id: number;
@@ -16,6 +21,25 @@ type props = {
 };
 
 function DoctorAgentCard({ doctorAgent }: props) {
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+
+  const onStartConsultation = async () => {
+    setLoading(true);
+    try {
+      const result = await axios.post("/api/session-chat", {
+        notes: "",
+        selectedDoctor: doctorAgent,
+      });
+      if (result.data?.sessionId) {
+        router.push("/dashboard/medical-agent/" + result.data.sessionId);
+      }
+    } catch (err) {
+      console.error("Error starting consultation", err);
+    }
+    setLoading(false);
+  };
+
   return (
     <div className="bg-white rounded-2xl shadow-xl p-4 transition-transform hover:scale-[1.03] hover:shadow-2xl duration-300 group">
       <div className="overflow-hidden rounded-xl">
@@ -35,8 +59,13 @@ function DoctorAgentCard({ doctorAgent }: props) {
         <p className="text-sm text-gray-600 line-clamp-2">
           {doctorAgent.description}
         </p>
-        <Button className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold hover:from-cyan-600 hover:to-blue-700 mt-3 transition-colors duration-300">
-          🩺 Start Consultation <IconArrowRight/>
+        <Button 
+          className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold hover:from-cyan-600 hover:to-blue-700 mt-3 transition-colors duration-300"
+          onClick={onStartConsultation}
+          disabled={loading}
+        >
+          {loading ? <Loader2 className="animate-spin mr-2" size={16} /> : "🩺 Start Consultation"}
+          {!loading && <IconArrowRight/>}
         </Button>
       </div>
     </div>
